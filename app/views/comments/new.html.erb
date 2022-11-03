@@ -1,13 +1,25 @@
-
-    <div class="page content col-7">
+<style>
+.text-center
+{
+  width: 700px;
+}
+.global
+{
+  display: flex;
+  justify-content: center;
+}
+</style>
+<div class="global">
+    <div class="text-center">
       <%= form_tag url_for(action: 'create'), method: "post" do %>
 
         <div class="form-group">
-        <%= label_tag 'Content', name = 'Content' , class: 'font-weight-bold'%>
+        <%= label_tag 'Content', name = 'Your comment :' , class: 'font-weight-bold'%>
         <%= text_area_tag 'content', nil, rows: 6, placeholder: 'Write your comment...', class: 'form-control'%>
         </div>
         <br><br>
 
         <%= submit_tag "Create Comment", class: 'btn btn-primary' %>
       <% end %>
-   </div>
+    </div>
+</div>    

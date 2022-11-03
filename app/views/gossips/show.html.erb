@@ -1,26 +1,73 @@
+<style>
+.global
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.comment_line
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 1400px;
+}
+.user_name
+{
+    width: 150px;
+}
+.comment
+{
+    width: 900px;
+}
+.view_to_delete
+{
+    display: flex;
+    flex-direction: row;
+}
+a
+{
+    text-decoration: none;
+}
+.title
+{
+    color: green;
+    font-size: x-large;
+}
+
+</style>
+
 <div class="text-center"> 
-        <h4>GOSSIP:</h4>
-        <p> Author : <%= link_to @gossip.user.first_name, user_path(@gossip.user.id) %> <%= link_to @gossip.user.last_name, user_path(@gossip.user.id) %>
-        &nbsp City : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></p>
-        <p>  Title : <span class="title"><%= @gossip.title %></span></p>
-        <p>Content : <span class="content"><h4><%= @gossip.content %></span></h4><br></p>
+        <br>
+        <h4> From : <%= link_to @gossip.user.first_name, user_path(@gossip.user.id) %> <%= link_to @gossip.user.last_name, user_path(@gossip.user.id) %>
+        &nbsp Of : <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %></h4>
+        <p><span class="title"><%= @gossip.title %></span></p>
+        <p><span class="title"><%= @gossip.content %></span><br><br></p>
 </div>
 
-<div class="container-fluid d-flex flex-wrap justify-content-center">
-    <h4>COMMENTS:</h4>
-    <div class="container-fluid d-flex flex-wrap justify-content-center">
+<div class="global">
+    <h5>COMMENTS:</h5>
         <% @comments.each do |comment| %>
-            <div class="card p-2 m-1" style="width: 22rem;">
-                <div class="card-body">
-                    <h3 class="card-text"><%= comment.user.first_name %></h3>
-                    <p class="card-text"><%= comment.content %></p>
-                    <p> <%= link_to "EDIT", edit_comment_path(comment.id), :class => "btn btn-primary" %>
-                        <%= button_to "DEL", comment_path(comment.id), :class => "btn btn-danger", :confirm => "Are you sure?", :method => :delete %> 
-                        <%# &#128465; %>
-                    </p>
-                </div>
+        <div class="comment_line">
+            <div class="user_name">
+                    <h4><%= link_to comment.user.first_name, user_path(comment.user.id) %></h4>
             </div>
+            <div class="comment">
+                    <h4><%= comment.content %></h4>
+            </div>
+            <div class="view_to_delete">
+            <div class="view_edit">
+                    <%= link_to "EDIT", edit_comment_path(comment.id), :class => "btn btn-primary" %>
+            </div>
+            <div class="delete">
+                    <%= button_to "DEL", comment_path(comment.id), :class => "btn btn-danger", :method => :delete %> 
+            </div>
+            </div>
+        </div>
         <% end %>
-    </div>
     <%= link_to "Create Comment", new_comment_path, :class => 'btn btn-primary' %>
 </div>
+    

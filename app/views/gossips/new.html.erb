@@ -1,6 +1,16 @@
-
-
-    <div class="page content col-7">
+<style>
+.text-center
+{
+  width: 700px;
+}
+.global
+{
+  display: flex;
+  justify-content: center;
+}
+</style>
+<div class="global">
+    <div class="text-center">
       <%= form_tag url_for(action: 'create'), method: "post" do %>
 
         <div class="form-group">
@@ -19,3 +29,4 @@
         <%= submit_tag "Create Post", class: 'btn btn-primary' %>
       <% end %>
    </div>
+</div>
