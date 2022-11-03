@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-     
+  
+
     def edit
       @comment = Comment.find(params[:id])
     end
@@ -9,10 +10,11 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(content:params[:content], user_id: current_user.id, gossip_id: params[:gossip_id])
+        @comment = Comment.new(content:params[:content], user_id: current_user.id, gossip_id: 2)
+
         if @comment.save
           flash[:notice] = "COMMENT SAVE"
-          redirect_to gossip_path(params[:gossip_id])
+          redirect_to gossip_path(@comment.gossip.id)
         else 
           flash.now[:alert] = "ERROR TRY AGAIN"
           render new_comment_path
@@ -32,6 +34,10 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
       @comment.destroy
       redirect_to gossip_path(@comment.gossip.id)
+    end
+
+    def comment_params
+      params.require(:comment).permit(:content)
     end
 
     private

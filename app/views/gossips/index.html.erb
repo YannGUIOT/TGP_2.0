@@ -1,18 +1,60 @@
+<style>
+.global
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.gossip_line
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 900px;
+}
+.user_name
+{
+    width: 150px;
+}
+.gossip_title
+{
+    width: 400px;
+}
+.view_to_delete
+{
+    display: flex;
+    flex-direction: row;
+}
+a
+{
+    text-decoration: none;
+}
+</style>
 
-<div class="container-fluid d-flex flex-wrap justify-content-center">
+
+
+<div class="global">
     <% @gossips.each do |gossip| %>
-        <div class="card p-2 m-1" style="width: 22rem;">
-            <div class="card-body">
-                <h3 class="card-text"><%= link_to gossip.user.first_name, user_path(gossip.user.id) %></h3>
-  
-                <h5 class="card-text"><%= gossip.title %></h5>
-                <p> 
+        <div class="gossip_line">
+            <div class="user_name">
+                <h4><%= link_to gossip.user.first_name, user_path(gossip.user.id) %></h4>
+            </div>
+            <div class="gossip_title">
+                <h4><%= gossip.title %></h4>
+            </div>
+            <div class="view_to_delete">
+            <div class="view_edit">
                     <%= link_to "VIEW", gossip_path(gossip.id), :class => "btn btn-success" %>
                     <%= link_to "EDIT", edit_gossip_path(gossip.id), :class => "btn btn-primary" %>
-                    <%= button_to "DEL", gossip_path(gossip.id), :class => "btn btn-danger", :confirm => "Are you sure?", :method => :delete %> 
-                    <%# &#128465; %>
-                </p>
             </div>
+            <div class="delete">
+                    <%= button_to "DEL", gossip_path(gossip.id), :class => "btn btn-danger", :method => :delete %>
+            </div>
+            </div>
+                    <%# &#128465; %>
         </div>
     <% end %>
 </div>
