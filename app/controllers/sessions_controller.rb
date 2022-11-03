@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete(:user_id)
+        redirect_to :root
     end
 
 end

@@ -18,7 +18,7 @@
                     <p class="card-text"><%= comment.content %></p>
                     <p> <%= link_to "EDIT", edit_comment_path(comment.id), :class => "btn btn-primary" %>
                         <%= button_to "DEL", comment_path(comment.id), :class => "btn btn-danger", :confirm => "Are you sure?", :method => :delete %> 
-                        &#128465;
+                        <%# &#128465; %>
                     </p>
                 </div>
             </div>

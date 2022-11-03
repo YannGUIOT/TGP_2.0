@@ -9,10 +9,10 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.new(content:params[:content], user_id: rand(1..10), gossip_id: 1)
+        @comment = Comment.new(content:params[:content], user_id: current_user.id, gossip_id: params[:gossip_id])
         if @comment.save
           flash[:notice] = "COMMENT SAVE"
-          redirect_to gossips_path
+          redirect_to gossip_path(params[:gossip_id])
         else 
           flash.now[:alert] = "ERROR TRY AGAIN"
           render new_comment_path
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     def update
       @comment = Comment.find(params[:id])
       if @comment.update(post_params)
-        redirect_to gossips_path
+        redirect_to gossip_path(@comment.gossip.id)
       else
         render :edit
       end
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       @comment.destroy
-      redirect_to gossips_path
+      redirect_to gossip_path(@comment.gossip.id)
     end
 
     private

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  resources :gossips
+  resources :gossips do
+  resources :comments, only: [:edit, :destroy, :new, :create, :update]
+end
+
   resources :comments
 
-  resources :users
-  resources :cities
-  resources :sessions
+  resources :users, only: [:show, :create,:new]
+  resources :cities, only: [:show]
+  resources :sessions, only: [:new, :create, :destroy]
 
   root 'sessions#new'
 

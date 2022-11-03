@@ -11,29 +11,27 @@
 
   <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-dark px-5">
-        <h1>THE GOSSIP PROJECT</h1>
+        <h1>THE GOSSIP PROJECT &nbsp &nbsp &nbsp &nbsp</h1>
+        <% if logged_in? %>
+        <h4> Welcome : &nbsp<%= current_user.first_name %>&nbsp<%= current_user.last_name %> &nbsp &nbsp &nbsp </h4>
+        <%= link_to "Create Gossip", new_gossip_path, :class => 'btn btn-primary' %>
+        <% end %>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <%= link_to "Accueil", "/", :class => "nav-link text-white" %>
-                </li>
+                <% if logged_in? %>
+                  <li class="nav-item">
+                    <%= link_to "Accueil", gossips_path, :class => "nav-link text-white" %>
+                  </li>
+                <% end %>
                 <li class="nav-item">
                     <%= link_to "Team", "/equipe", :class => "nav-link text-white" %>
                 </li>
                 <li class="nav-item active">
                     <%= link_to "Contact", "/contact", :class => "nav-link text-white-50" %>
                 </li>
-                <li class="dropdown show">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Compte</a>
-                      <ul class="dropdown-menu">
-                        <% if logged_in? %>
-                          <li><%= button_to "Déconnexion", session_path(session.id), method: :delete, class: 'dropdown-item' %></li>
-                        <% else %>
-                          <li><%= link_to "Connexion", new_session_path, class: 'dropdown-item' %></li>
-                          <li><%= link_to "Inscription", new_user_path, class: 'dropdown-item' %></li>
-                        <% end %>
-                      </ul>
-                </li>
+                <% if logged_in? %>
+                  <%= button_to "Déconnexion", session_path(session.id), method: :delete, class: 'btn btn-danger' %></li>
+                <% end %>
             </ul>
         </div>
       </nav>
