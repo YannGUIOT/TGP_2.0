@@ -1,0 +1,13 @@
+<p> City : </p><h1><%= @city.name %> </h1></br></br>
+
+<div class="container-fluid d-flex flex-wrap justify-content-center">
+    <% @gossips.each do |gossip| %>
+        <div class="card p-2 m-1" style="width: 22rem;">
+            <div class="card-body">
+                <h2 class="card-text"><%= link_to gossip.user.first_name, user_path(gossip.user.id) %></h2>
+  
+                <p class="card-text"><%= link_to gossip.title, gossip_path(gossip) %></p>
+            </div>
+        </div>
+    <% end %>
+</div>

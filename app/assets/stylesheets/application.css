@@ -1,0 +1,63 @@
+
+
+*
+{
+   text-align: center;
+}
+
+header
+{
+   background-color: burlywood;
+   border: 1px solid black;
+   font-weight: bold;
+}
+
+h1
+{
+   text-shadow: 5px 1px 4px black;
+}
+
+h2
+{
+color: aquamarine;
+}
+
+li
+{
+   font-size: xx-large;
+   color: aqua;
+}
+
+p
+{
+   font-size: x-large;
+   color: rgb(59, 14, 101);
+}
+
+a
+{
+text-decoration: none;
+}
+
+.title
+{
+color: rgb(101, 201, 101);
+}
+
+.content
+{
+color: antiquewhite;
+}
+
+.GossipCadre
+{
+   display: flex;
+   justify-content: center;
+}
+
+.Gossip
+{
+border: 1px solid black;
+border-radius: 80px;
+width: 600px;
+}

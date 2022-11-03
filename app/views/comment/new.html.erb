@@ -1,0 +1,12 @@
+    <div class="page content col-7">
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+        <div class="form-group">
+        <%= label_tag 'Content', name = 'Content' , class: 'font-weight-bold'%>
+        <%= text_area_tag 'content', nil, rows: 6, placeholder: 'Write your comment...', class: 'form-control'%>
+        </div>
+        <br><br>
+
+        <%= submit_tag "Create Comment", class: 'btn btn-primary' %>
+      <% end %>
+   </div>
