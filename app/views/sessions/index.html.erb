@@ -1,0 +1,41 @@
+
+<style>
+h2
+{
+    color: blue;
+}
+
+.text-center
+{
+    width: 400px
+}
+
+.global
+{
+    display: flex;
+    justify-content: center;
+}
+</style>
+<div class= global>
+    <div class="text-center">
+        <h2> WELCOME TO GOSSIP PROJECT </h2><br>
+        <main class="form-signin">
+            <form>
+                <h1 class="h4 mb-3 fw-normal">Please sign in</h1>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+            </form>
+        </main>
+        <br><br>
+        <h5> New User ? </h5>
+        <%= link_to "Create Account", new_user_path, :class => 'btn btn-primary' %>
+    </div>
+</div>

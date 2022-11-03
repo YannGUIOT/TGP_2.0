@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :gossip
-  resources :user
-  resources :city
-  resources :comment
- 
-  root 'gossip#index'
+  resources :gossips
+  resources :comments
+
+  resources :users
+  resources :cities
+  resources :sessions
+
+  root 'sessions#index'
 
   get '/contact', to: 'contact#contact'
   get '/equipe', to: 'team#team'

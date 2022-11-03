@@ -1,5 +1,6 @@
-<p> City : </p><h1><%= @city.name %> </h1></br></br>
-
+<div class="container-fluid d-flex flex-wrap justify-content-center">
+    <h3> City : &nbsp</h3><h3><%= @city.name %> </h3></br></br>
+</div>
 <div class="container-fluid d-flex flex-wrap justify-content-center">
     <% @gossips.each do |gossip| %>
         <div class="card p-2 m-1" style="width: 22rem;">

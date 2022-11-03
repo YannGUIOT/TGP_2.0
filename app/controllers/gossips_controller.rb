@@ -1,4 +1,4 @@
-class GossipController < ApplicationController
+class GossipsController < ApplicationController
     
     def index
         @gossips = Gossip.all
@@ -11,14 +11,14 @@ class GossipController < ApplicationController
     end
 
     def new
-
+      
     end
 
     def create
       @gossip = Gossip.new(title:params[:title], content:params[:content],user_id: rand(1..10))
       if @gossip.save
         flash[:notice] = "GOSSIP SAVE"
-        redirect_to root_path
+        redirect_to gossips_path
       else 
         flash.now[:alert] = "ERROR TRY AGAIN"
         render new_gossip_path
@@ -33,7 +33,7 @@ class GossipController < ApplicationController
     def update
       @gossip = Gossip.find(params[:id])
       if @gossip.update(post_params)
-        redirect_to gossip_path
+        redirect_to gossips_path
       else
         render :edit
       end
@@ -42,7 +42,7 @@ class GossipController < ApplicationController
     def destroy
       @gossip = Gossip.find(params[:id])
       @gossip.destroy
-      redirect_to :root
+      redirect_to gossips_path
     end
 
     private
