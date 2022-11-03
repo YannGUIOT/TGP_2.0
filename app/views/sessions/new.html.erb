@@ -1,0 +1,48 @@
+
+<style>
+h2
+{
+    color: blue;
+}
+
+.text-center
+{
+    width: 400px
+}
+
+.global
+{
+    display: flex;
+    justify-content: center;
+}
+</style>
+<div class= global>
+    <div class="text-center">
+        <h2> WELCOME TO GOSSIP PROJECT </h2><br>
+        <main class="form-signin">
+           <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+    <div class='form-group'>
+      <label>Email</label><br>
+      <%= email_field_tag 'email',"", class:'form-control' %>
+    </div>
+
+    <br>
+
+    <div class='form-group'>
+      <label>Passwaord</label><br>
+      <%= password_field_tag 'password',"", class:'form-control' %>
+    </div>
+
+    <br>  
+
+    <div class='form-group'>
+      <button type=submit class='btn btn-success'>CONNEXION</button>
+    </div>
+  <% end %>
+        </main>
+        <br><br>
+        <h5> New User ? </h5>
+        <%= link_to "Create Account", new_user_path, :class => 'btn btn-primary' %>
+    </div>
+</div>

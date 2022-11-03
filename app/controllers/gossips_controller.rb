@@ -15,9 +15,9 @@ class GossipsController < ApplicationController
     end
 
     def create
-      @gossip = Gossip.new(title:params[:title], content:params[:content],user_id: rand(1..10))
+      @gossip = Gossip.new(title:params[:title], content:params[:content],user_id: current_user.id)
       if @gossip.save
-        flash[:notice] = "GOSSIP SAVE"
+        flash[:success] = "GOSSIP SAVE"
         redirect_to gossips_path
       else 
         flash.now[:alert] = "ERROR TRY AGAIN"

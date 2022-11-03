@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :cities
   resources :sessions
 
-  root 'sessions#index'
+  root 'sessions#new'
 
   get '/contact', to: 'contact#contact'
   get '/equipe', to: 'team#team'
